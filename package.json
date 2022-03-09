@@ -1,0 +1,12 @@
+{
+    "name": "excelInSPS",
+    "description": "to get an excel file froma remote PC and forward its content to SPS via OPC UA",
+    "version": "0.0.1",
+    "dependencies": {},
+    "node-red": {
+        "settings": {
+            "flowFile": "flow.json",
+            "credentialsFile": "flow_cred.json"
+        }
+    }
+}
