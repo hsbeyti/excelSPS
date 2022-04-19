@@ -1,1 +1,1505 @@
-[]
+[
+    {
+        "id": "2fd09629f2e4ee90",
+        "type": "tab",
+        "label": "DataTransfer",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "91a08dedd804fe47",
+        "type": "tab",
+        "label": "hanschak",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "30bb086b756a8fd8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "92251413baef12b2",
+        "type": "tab",
+        "label": "read data from file",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "66b716f45b9c6672",
+        "type": "ftp",
+        "host": "localhost",
+        "port": "",
+        "secureOptions": "",
+        "user": "hmi",
+        "connTimeout": "",
+        "pasvTimeout": "",
+        "keepalive": ""
+    },
+    {
+        "id": "55182065ac22cf83",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://192.168.86.10:4840",
+        "secpol": "None",
+        "secmode": "None",
+        "none": false,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    },
+    {
+        "id": "403215d057ac2a3a",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://192.168.86.10:4840",
+        "secpol": "None",
+        "secmode": "None",
+        "none": false,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    },
+    {
+        "id": "769555527b757e9d",
+        "type": "debug",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "e5980da51b489322",
+        "type": "inject",
+        "z": "2fd09629f2e4ee90",
+        "name": "Read LeseBreit",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=20;datatype=Boolean",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 60,
+        "wires": [
+            [
+                "eece7832cbe91f85"
+            ]
+        ]
+    },
+    {
+        "id": "eece7832cbe91f85",
+        "type": "OpcUa-Client",
+        "z": "2fd09629f2e4ee90",
+        "endpoint": "403215d057ac2a3a",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "folderName4PKI": "",
+        "name": "",
+        "x": 340,
+        "y": 60,
+        "wires": [
+            [
+                "1b9f1f90b9cb758a"
+            ]
+        ]
+    },
+    {
+        "id": "db8614c539f3ff9b",
+        "type": "debug",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "bc72e806000b7836",
+        "type": "comment",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "info": "\nWe have two status bits used for  hanshak with server\nlesebereit and StartRead_code: \n\nlesebereit:\nStartRead_code:\n\n//sequence diagram\nRead lesebereit status and if it is true do nothing\nelse if it is false then check if StartRead_code is true\n if  StartRead_code is true then\n    send one byte\n    increment index\n    set lesebereit  to true\n    if index equal xx \n      setze StartRead_code  false, signaling the end of data transfer\n  else if  StartRead_code is false then do nothing",
+        "x": 100,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "dd286a842d7ef742",
+        "type": "switch",
+        "z": "2fd09629f2e4ee90",
+        "name": "do nothing if leseBereit is true",
+        "property": "leseBereit",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 590,
+        "y": 180,
+        "wires": [
+            [
+                "db8614c539f3ff9b"
+            ],
+            [
+                "7e3cf295d56bbdc4",
+                "5a1c5241aa1d00b4"
+            ]
+        ]
+    },
+    {
+        "id": "69a0138a6b5599d7",
+        "type": "switch",
+        "z": "2fd09629f2e4ee90",
+        "name": "check if Start transfer is true",
+        "property": "startRead_Code",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 580,
+        "y": 120,
+        "wires": [
+            [
+                "dd286a842d7ef742"
+            ]
+        ]
+    },
+    {
+        "id": "45d7a984580b3de2",
+        "type": "function",
+        "z": "2fd09629f2e4ee90",
+        "name": "get items count",
+        "func": "// send all\n//var counttest=global.get('counttest');\nmsg.payload=global.get('counter');\nmsg.payload*=20;\n//counttest++;\n//global.set('counttest',counttest);\n//msg.payload=counttest;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 220,
+        "wires": [
+            [
+                "769555527b757e9d",
+                "b8833c3704bf188c"
+            ]
+        ]
+    },
+    {
+        "id": "416758d851c58bcb",
+        "type": "OpcUa-Client",
+        "z": "2fd09629f2e4ee90",
+        "endpoint": "55182065ac22cf83",
+        "action": "write",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "folderName4PKI": "",
+        "name": "",
+        "x": 800,
+        "y": 380,
+        "wires": [
+            [
+                "7c62f73d090a42f1"
+            ]
+        ]
+    },
+    {
+        "id": "30e19ab6c9752f37",
+        "type": "debug",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "b8833c3704bf188c",
+        "type": "OpcUa-Item",
+        "z": "2fd09629f2e4ee90",
+        "item": "ns=4;i=17",
+        "datatype": "Int16",
+        "value": "",
+        "name": "Write items count",
+        "x": 510,
+        "y": 380,
+        "wires": [
+            [
+                "416758d851c58bcb"
+            ]
+        ]
+    },
+    {
+        "id": "3a10879934c920b7",
+        "type": "OpcUa-Client",
+        "z": "2fd09629f2e4ee90",
+        "endpoint": "55182065ac22cf83",
+        "action": "write",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "folderName4PKI": "",
+        "name": "",
+        "x": 780,
+        "y": 620,
+        "wires": [
+            [
+                "f2c4e37d7dc784df"
+            ]
+        ]
+    },
+    {
+        "id": "cfbe733c16dc6bfe",
+        "type": "debug",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "011911047420797c",
+        "type": "OpcUa-Item",
+        "z": "2fd09629f2e4ee90",
+        "item": "ns=4;i=22",
+        "datatype": "String",
+        "value": "",
+        "name": "write ziele",
+        "x": 480,
+        "y": 620,
+        "wires": [
+            [
+                "3a10879934c920b7"
+            ]
+        ]
+    },
+    {
+        "id": "308c27ed57cd2545",
+        "type": "OpcUa-Item",
+        "z": "2fd09629f2e4ee90",
+        "item": "ns=4;i=21",
+        "datatype": "String",
+        "value": "",
+        "name": "Write codes",
+        "x": 490,
+        "y": 500,
+        "wires": [
+            [
+                "23d0c90e192f2f8f"
+            ]
+        ]
+    },
+    {
+        "id": "23d0c90e192f2f8f",
+        "type": "OpcUa-Client",
+        "z": "2fd09629f2e4ee90",
+        "endpoint": "55182065ac22cf83",
+        "action": "write",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "folderName4PKI": "",
+        "name": "",
+        "x": 780,
+        "y": 500,
+        "wires": [
+            [
+                "4f1e8045c315ca26"
+            ]
+        ]
+    },
+    {
+        "id": "7c62f73d090a42f1",
+        "type": "function",
+        "z": "2fd09629f2e4ee90",
+        "name": "set  in msg.payload lobal codes",
+        "func": "//sedn one byte tp SPS\n\nmsg.payload=global.get('code');\n//msg.payload=\"code\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 440,
+        "wires": [
+            [
+                "308c27ed57cd2545",
+                "30e19ab6c9752f37"
+            ]
+        ]
+    },
+    {
+        "id": "1b9f1f90b9cb758a",
+        "type": "function",
+        "z": "2fd09629f2e4ee90",
+        "name": "save lese_bereit value in global variable",
+        "func": "var index=global.get('leseBereit') || false;\nglobal.set('leseBereit',msg.payload) ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 60,
+        "wires": [
+            [
+                "43e4983c78a0cc2d",
+                "69a0138a6b5599d7"
+            ]
+        ]
+    },
+    {
+        "id": "43e4983c78a0cc2d",
+        "type": "debug",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "7e3cf295d56bbdc4",
+        "type": "debug",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "4f1e8045c315ca26",
+        "type": "function",
+        "z": "2fd09629f2e4ee90",
+        "name": "set  in msg.payload lobal ziele",
+        "func": "\nmsg.payload=global.get('ziel');\n//msg.payload=\"ziel\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 560,
+        "wires": [
+            [
+                "011911047420797c",
+                "cfbe733c16dc6bfe"
+            ]
+        ]
+    },
+    {
+        "id": "e0f21ec2579e0832",
+        "type": "OpcUa-Client",
+        "z": "2fd09629f2e4ee90",
+        "endpoint": "55182065ac22cf83",
+        "action": "write",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "folderName4PKI": "",
+        "name": "",
+        "x": 780,
+        "y": 700,
+        "wires": [
+            [
+                "bc79a1f3ce766808"
+            ]
+        ]
+    },
+    {
+        "id": "f2c4e37d7dc784df",
+        "type": "OpcUa-Item",
+        "z": "2fd09629f2e4ee90",
+        "item": "ns=4;i=20",
+        "datatype": "Boolean",
+        "value": "true",
+        "name": "set lese_bereit true",
+        "x": 510,
+        "y": 700,
+        "wires": [
+            [
+                "e0f21ec2579e0832"
+            ]
+        ]
+    },
+    {
+        "id": "4e8f0bae05d66d79",
+        "type": "debug",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "bc79a1f3ce766808",
+        "type": "change",
+        "z": "2fd09629f2e4ee90",
+        "name": "set write completed true",
+        "rules": [
+            {
+                "t": "set",
+                "p": "write_completed",
+                "pt": "global",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 800,
+        "wires": [
+            [
+                "4e8f0bae05d66d79"
+            ]
+        ]
+    },
+    {
+        "id": "5a1c5241aa1d00b4",
+        "type": "switch",
+        "z": "2fd09629f2e4ee90",
+        "name": "only when write complete is false go",
+        "property": "write_completed",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "false"
+            },
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 590,
+        "y": 240,
+        "wires": [
+            [
+                "45d7a984580b3de2"
+            ],
+            [
+                "c7ecb443c3fa33a3"
+            ]
+        ]
+    },
+    {
+        "id": "6025dc5b38ab6302",
+        "type": "OpcUa-Client",
+        "z": "2fd09629f2e4ee90",
+        "endpoint": "55182065ac22cf83",
+        "action": "write",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "folderName4PKI": "",
+        "name": "",
+        "x": 120,
+        "y": 420,
+        "wires": [
+            [
+                "0774f15776cce2ba"
+            ]
+        ]
+    },
+    {
+        "id": "617d25474d7299cd",
+        "type": "OpcUa-Item",
+        "z": "2fd09629f2e4ee90",
+        "item": "ns=4;i=16",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "set start transfer false",
+        "x": 160,
+        "y": 360,
+        "wires": [
+            [
+                "6025dc5b38ab6302"
+            ]
+        ]
+    },
+    {
+        "id": "0774f15776cce2ba",
+        "type": "change",
+        "z": "2fd09629f2e4ee90",
+        "name": "set write complete false",
+        "rules": [
+            {
+                "t": "set",
+                "p": "write_completed",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 170,
+        "y": 500,
+        "wires": [
+            [
+                "4ae79c0bd4e069e1"
+            ]
+        ]
+    },
+    {
+        "id": "c7ecb443c3fa33a3",
+        "type": "function",
+        "z": "2fd09629f2e4ee90",
+        "name": "set payload to false",
+        "func": "msg.payload=false;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 150,
+        "y": 300,
+        "wires": [
+            [
+                "617d25474d7299cd"
+            ]
+        ]
+    },
+    {
+        "id": "f1477860f8de0228",
+        "type": "debug",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 150,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "4bbfd10282faf01d",
+        "type": "OpcUa-Client",
+        "z": "2fd09629f2e4ee90",
+        "endpoint": "403215d057ac2a3a",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "folderName4PKI": "",
+        "name": "",
+        "x": 160,
+        "y": 600,
+        "wires": [
+            [
+                "b0075b7d8ad4656b"
+            ]
+        ]
+    },
+    {
+        "id": "b0075b7d8ad4656b",
+        "type": "change",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "startRead_Code",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 200,
+        "y": 660,
+        "wires": [
+            [
+                "f1477860f8de0228"
+            ]
+        ]
+    },
+    {
+        "id": "4ae79c0bd4e069e1",
+        "type": "function",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "func": "msg.topic=\"ns=4;i=16;datatype=Boolean\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 120,
+        "y": 540,
+        "wires": [
+            [
+                "4bbfd10282faf01d"
+            ]
+        ]
+    },
+    {
+        "id": "3f264ffe5bdf741a",
+        "type": "inject",
+        "z": "91a08dedd804fe47",
+        "name": "Read Start_transfer",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=16;datatype=Boolean",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "19fb865349d7fe43"
+            ]
+        ]
+    },
+    {
+        "id": "19fb865349d7fe43",
+        "type": "OpcUa-Client",
+        "z": "91a08dedd804fe47",
+        "endpoint": "403215d057ac2a3a",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "folderName4PKI": "",
+        "name": "",
+        "x": 480,
+        "y": 120,
+        "wires": [
+            [
+                "16a0e6d20b73b712",
+                "b1f9a3ce7e7df4db"
+            ]
+        ]
+    },
+    {
+        "id": "b8af918b16f92f72",
+        "type": "debug",
+        "z": "91a08dedd804fe47",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "16a0e6d20b73b712",
+        "type": "change",
+        "z": "91a08dedd804fe47",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "startRead_Code",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1973f2d0d30afa5f",
+        "type": "comment",
+        "z": "91a08dedd804fe47",
+        "name": "",
+        "info": "It reads the StartRead_Code variable",
+        "x": 360,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "11c0641e3400313d",
+        "type": "switch",
+        "z": "91a08dedd804fe47",
+        "name": "when the startRead-code is true, check write complete if true",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "false"
+            },
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 600,
+        "y": 280,
+        "wires": [
+            [],
+            [
+                "6f349570f9435693"
+            ]
+        ]
+    },
+    {
+        "id": "43ad0982fb59817e",
+        "type": "switch",
+        "z": "91a08dedd804fe47",
+        "name": "is write complete true?",
+        "property": "write_completed",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 520,
+        "y": 400,
+        "wires": [
+            [
+                "8dd541c4a5e4eede"
+            ]
+        ]
+    },
+    {
+        "id": "8dd541c4a5e4eede",
+        "type": "change",
+        "z": "91a08dedd804fe47",
+        "name": "set write complete false",
+        "rules": [
+            {
+                "t": "set",
+                "p": "write_completed",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 530,
+        "y": 460,
+        "wires": [
+            [
+                "a724d17974e15587"
+            ]
+        ]
+    },
+    {
+        "id": "fe82fef9b01b0590",
+        "type": "OpcUa-Client",
+        "z": "91a08dedd804fe47",
+        "endpoint": "55182065ac22cf83",
+        "action": "write",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "folderName4PKI": "",
+        "name": "",
+        "x": 800,
+        "y": 540,
+        "wires": [
+            [
+                "b8af918b16f92f72"
+            ]
+        ]
+    },
+    {
+        "id": "969b79078d436af2",
+        "type": "OpcUa-Item",
+        "z": "91a08dedd804fe47",
+        "item": "ns=4;i=16",
+        "datatype": "Boolean",
+        "value": "false",
+        "name": "set start transfer false",
+        "x": 520,
+        "y": 560,
+        "wires": [
+            [
+                "fe82fef9b01b0590",
+                "3cf53f3d41c823b6"
+            ]
+        ]
+    },
+    {
+        "id": "6f349570f9435693",
+        "type": "switch",
+        "z": "91a08dedd804fe47",
+        "name": "is lese bereit false,? SPS has read all data",
+        "property": "leseBereit",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 580,
+        "y": 340,
+        "wires": [
+            [
+                "43ad0982fb59817e"
+            ]
+        ]
+    },
+    {
+        "id": "b1f9a3ce7e7df4db",
+        "type": "debug",
+        "z": "91a08dedd804fe47",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a724d17974e15587",
+        "type": "function",
+        "z": "91a08dedd804fe47",
+        "name": "set payload to false",
+        "func": "msg.payload=false;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4af28ee0c6f9c7d0",
+        "type": "inject",
+        "z": "91a08dedd804fe47",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 560,
+        "wires": [
+            [
+                "969b79078d436af2"
+            ]
+        ]
+    },
+    {
+        "id": "3cf53f3d41c823b6",
+        "type": "debug",
+        "z": "91a08dedd804fe47",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "3082aeb83f6b6cc0",
+        "type": "OpcUa-Client",
+        "z": "30bb086b756a8fd8",
+        "endpoint": "55182065ac22cf83",
+        "action": "write",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "folderName4PKI": "",
+        "name": "",
+        "x": 640,
+        "y": 220,
+        "wires": [
+            [
+                "e24ff3dd18b1d54a"
+            ]
+        ]
+    },
+    {
+        "id": "c7fce2cf14ea6927",
+        "type": "OpcUa-Item",
+        "z": "30bb086b756a8fd8",
+        "item": "ns=4;i=16",
+        "datatype": "Boolean",
+        "value": "",
+        "name": "set start transfer false",
+        "x": 640,
+        "y": 160,
+        "wires": [
+            [
+                "3082aeb83f6b6cc0"
+            ]
+        ]
+    },
+    {
+        "id": "d4816c2b67aa2563",
+        "type": "function",
+        "z": "30bb086b756a8fd8",
+        "name": "",
+        "func": "msg.payload=false;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 180,
+        "wires": [
+            [
+                "c7fce2cf14ea6927"
+            ]
+        ]
+    },
+    {
+        "id": "cf61517c295a089d",
+        "type": "inject",
+        "z": "30bb086b756a8fd8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 180,
+        "wires": [
+            [
+                "d4816c2b67aa2563"
+            ]
+        ]
+    },
+    {
+        "id": "e24ff3dd18b1d54a",
+        "type": "debug",
+        "z": "30bb086b756a8fd8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "081cc8e57eabbfdb",
+        "type": "function",
+        "z": "92251413baef12b2",
+        "name": "",
+        "func": "msg.payload=global.get('code')\nmsg.topic=global.get('ziel');\n//msg.codel=msg.payload.length;\n//msg.ziell=msg.topic.length;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 760,
+        "wires": [
+            [
+                "ff4dd534ce168b79"
+            ]
+        ]
+    },
+    {
+        "id": "ff4dd534ce168b79",
+        "type": "debug",
+        "z": "92251413baef12b2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "86240aab9bd98cb8",
+        "type": "file in",
+        "z": "92251413baef12b2",
+        "name": "",
+        "filename": "",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 340,
+        "y": 200,
+        "wires": [
+            [
+                "2cb8246b788c68f4"
+            ]
+        ]
+    },
+    {
+        "id": "b8ed465c84669408",
+        "type": "inject",
+        "z": "92251413baef12b2",
+        "name": "read file one time aftre one seocnd of the start, initlaze all global vr",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 320,
+        "y": 60,
+        "wires": [
+            [
+                "8e93883fc1cc0ed3"
+            ]
+        ]
+    },
+    {
+        "id": "2cb8246b788c68f4",
+        "type": "split",
+        "z": "92251413baef12b2",
+        "name": "split each line and send it as message",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": "1",
+        "arraySpltType": "len",
+        "stream": true,
+        "addname": "",
+        "x": 250,
+        "y": 260,
+        "wires": [
+            [
+                "f921e50c50198924"
+            ]
+        ]
+    },
+    {
+        "id": "b20626638715fcb8",
+        "type": "debug",
+        "z": "92251413baef12b2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "386be75f5cf901af",
+        "type": "inject",
+        "z": "92251413baef12b2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 760,
+        "wires": [
+            [
+                "081cc8e57eabbfdb"
+            ]
+        ]
+    },
+    {
+        "id": "8e93883fc1cc0ed3",
+        "type": "change",
+        "z": "92251413baef12b2",
+        "name": "Initialize global variabesl: counter, code, ziel",
+        "rules": [
+            {
+                "t": "set",
+                "p": "counter",
+                "pt": "global",
+                "to": "0",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "code",
+                "pt": "global",
+                "to": "0",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "ziel",
+                "pt": "global",
+                "to": "0",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "counttest",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "write_completed",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 270,
+        "y": 120,
+        "wires": [
+            [
+                "d298fe67e84328f3"
+            ]
+        ]
+    },
+    {
+        "id": "186feeb43e60b1cc",
+        "type": "function",
+        "z": "92251413baef12b2",
+        "name": "create one striung for cods and ziele",
+        "func": "\nvar count=global.get('counter');\ncount++;\nglobal.set('counter',count);\nconst datax=msg.payload.split(\";\");\nconst padString=\"000000000000000000000000000000000\";\n// pad first string element and save it in paylaod\n// only oif strnig length smaler than 20\n let diffSTringlgh=20-datax[0].length;\n\n //datax[0]=datax[0].concat(\"\",padString.substr(0,diffSTringlgh-1));\n  var code=global.get('code');\n   code=code.concat(datax[0],\"\");\n   global.set('code',code);\n   msg.payload= datax[0];\n     \n\n\n\n\n// pad second string element and save it in topic\n// only oif strnig length smaler than 20\ndiffSTringlgh=20-datax[1].length;\nconst datam=datax[1].split(\"\\r\");\n  datam[0]=datam[0].concat(\"\",padString.substr(0,diffSTringlgh-1));\n  var ziel=global.get('ziel');\n  ziel=ziel.concat(datam[0],\"\");\n  global.set('ziel',ziel);\n  msg.topic= datam[0];\n\n  msg.count=count;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 360,
+        "wires": [
+            [
+                "b20626638715fcb8"
+            ]
+        ]
+    },
+    {
+        "id": "f921e50c50198924",
+        "type": "change",
+        "z": "92251413baef12b2",
+        "name": "set write complete false",
+        "rules": [
+            {
+                "t": "set",
+                "p": "write_completed",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 210,
+        "y": 300,
+        "wires": [
+            [
+                "186feeb43e60b1cc"
+            ]
+        ]
+    },
+    {
+        "id": "1ba15f16f826ae08",
+        "type": "comment",
+        "z": "92251413baef12b2",
+        "name": "",
+        "info": "It will be excuted once, one scond after the system has started.\nIt initilizes all global variable:\ncounter=0\ncode=0\nziele=0\ncounteTest=0\nwrite_completed=flase\n\n",
+        "x": 60,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "d298fe67e84328f3",
+        "type": "function",
+        "z": "92251413baef12b2",
+        "name": "",
+        "func": "\nmsg.filename='${INPUT_FILE}';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 160,
+        "wires": [
+            [
+                "86240aab9bd98cb8",
+                "9ef1ef537a8ebc96"
+            ]
+        ]
+    },
+    {
+        "id": "9ef1ef537a8ebc96",
+        "type": "debug",
+        "z": "92251413baef12b2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 160,
+        "wires": []
+    }
+]
