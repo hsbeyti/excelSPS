@@ -4,32 +4,28 @@
         "type": "tab",
         "label": "DataTransfer",
         "disabled": false,
-        "info": "",
-        "env": []
+        "info": ""
     },
     {
         "id": "91a08dedd804fe47",
         "type": "tab",
         "label": "hanschak",
         "disabled": false,
-        "info": "",
-        "env": []
+        "info": ""
     },
     {
         "id": "30bb086b756a8fd8",
         "type": "tab",
         "label": "Flow 1",
         "disabled": false,
-        "info": "",
-        "env": []
+        "info": ""
     },
     {
         "id": "92251413baef12b2",
         "type": "tab",
         "label": "read data from file",
         "disabled": false,
-        "info": "",
-        "env": []
+        "info": ""
     },
     {
         "id": "66b716f45b9c6672",
@@ -48,11 +44,7 @@
         "endpoint": "opc.tcp://192.168.86.10:4840",
         "secpol": "None",
         "secmode": "None",
-        "none": false,
-        "login": false,
-        "usercert": false,
-        "usercertificate": "",
-        "userprivatekey": ""
+        "login": false
     },
     {
         "id": "403215d057ac2a3a",
@@ -60,11 +52,7 @@
         "endpoint": "opc.tcp://192.168.86.10:4840",
         "secpol": "None",
         "secmode": "None",
-        "none": false,
-        "login": false,
-        "usercert": false,
-        "usercertificate": "",
-        "userprivatekey": ""
+        "login": false
     },
     {
         "id": "769555527b757e9d",
@@ -127,7 +115,6 @@
         "localkeyfile": "",
         "securitymode": "None",
         "securitypolicy": "None",
-        "folderName4PKI": "",
         "name": "",
         "x": 340,
         "y": 60,
@@ -150,8 +137,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1070,
-        "y": 120,
+        "x": 1050,
+        "y": 100,
         "wires": []
     },
     {
@@ -252,7 +239,6 @@
         "localkeyfile": "",
         "securitymode": "None",
         "securitypolicy": "None",
-        "folderName4PKI": "",
         "name": "",
         "x": 800,
         "y": 380,
@@ -271,10 +257,11 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 970,
+        "x": 950,
         "y": 440,
         "wires": []
     },
@@ -309,7 +296,6 @@
         "localkeyfile": "",
         "securitymode": "None",
         "securitypolicy": "None",
-        "folderName4PKI": "",
         "name": "",
         "x": 780,
         "y": 620,
@@ -324,14 +310,15 @@
         "type": "debug",
         "z": "2fd09629f2e4ee90",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 970,
+        "x": 950,
         "y": 560,
         "wires": []
     },
@@ -382,7 +369,6 @@
         "localkeyfile": "",
         "securitymode": "None",
         "securitypolicy": "None",
-        "folderName4PKI": "",
         "name": "",
         "x": 780,
         "y": 500,
@@ -408,7 +394,8 @@
         "wires": [
             [
                 "308c27ed57cd2545",
-                "30e19ab6c9752f37"
+                "30e19ab6c9752f37",
+                "943e1a69b9f1f7a6"
             ]
         ]
     },
@@ -500,7 +487,6 @@
         "localkeyfile": "",
         "securitymode": "None",
         "securitypolicy": "None",
-        "folderName4PKI": "",
         "name": "",
         "x": 780,
         "y": 700,
@@ -613,7 +599,6 @@
         "localkeyfile": "",
         "securitymode": "None",
         "securitypolicy": "None",
-        "folderName4PKI": "",
         "name": "",
         "x": 120,
         "y": 420,
@@ -716,7 +701,6 @@
         "localkeyfile": "",
         "securitymode": "None",
         "securitypolicy": "None",
-        "folderName4PKI": "",
         "name": "",
         "x": 160,
         "y": 600,
@@ -816,7 +800,6 @@
         "localkeyfile": "",
         "securitymode": "None",
         "securitypolicy": "None",
-        "folderName4PKI": "",
         "name": "",
         "x": 480,
         "y": 120,
@@ -971,7 +954,6 @@
         "localkeyfile": "",
         "securitymode": "None",
         "securitypolicy": "None",
-        "folderName4PKI": "",
         "name": "",
         "x": 800,
         "y": 540,
@@ -1073,7 +1055,6 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "",
         "payloadType": "date",
         "x": 200,
         "y": 560,
@@ -1115,7 +1096,6 @@
         "localkeyfile": "",
         "securitymode": "None",
         "securitypolicy": "None",
-        "folderName4PKI": "",
         "name": "",
         "x": 640,
         "y": 220,
@@ -1229,7 +1209,7 @@
         "type": "debug",
         "z": "92251413baef12b2",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1246,13 +1226,13 @@
         "type": "file in",
         "z": "92251413baef12b2",
         "name": "",
-        "filename": "",
+        "filename": "Export_Silierbuehne.txt",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 340,
+        "x": 400,
         "y": 200,
         "wires": [
             [
@@ -1279,7 +1259,6 @@
         "once": true,
         "onceDelay": "1",
         "topic": "",
-        "payload": "",
         "payloadType": "date",
         "x": 320,
         "y": 60,
@@ -1304,7 +1283,8 @@
         "y": 260,
         "wires": [
             [
-                "f921e50c50198924"
+                "f921e50c50198924",
+                "9ef1ef537a8ebc96"
             ]
         ]
     },
@@ -1313,7 +1293,7 @@
         "type": "debug",
         "z": "92251413baef12b2",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1321,8 +1301,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 690,
-        "y": 360,
+        "x": 610,
+        "y": 380,
         "wires": []
     },
     {
@@ -1371,14 +1351,14 @@
                 "t": "set",
                 "p": "code",
                 "pt": "global",
-                "to": "0",
+                "to": "",
                 "tot": "str"
             },
             {
                 "t": "set",
                 "p": "ziel",
                 "pt": "global",
-                "to": "0",
+                "to": "",
                 "tot": "str"
             },
             {
@@ -1386,7 +1366,7 @@
                 "p": "counttest",
                 "pt": "global",
                 "to": "0",
-                "tot": "num"
+                "tot": "str"
             },
             {
                 "t": "set",
@@ -1405,7 +1385,7 @@
         "y": 120,
         "wires": [
             [
-                "d298fe67e84328f3"
+                "86240aab9bd98cb8"
             ]
         ]
     },
@@ -1414,7 +1394,7 @@
         "type": "function",
         "z": "92251413baef12b2",
         "name": "create one striung for cods and ziele",
-        "func": "\nvar count=global.get('counter');\ncount++;\nglobal.set('counter',count);\nconst datax=msg.payload.split(\";\");\nconst padString=\"000000000000000000000000000000000\";\n// pad first string element and save it in paylaod\n// only oif strnig length smaler than 20\n let diffSTringlgh=20-datax[0].length;\n\n //datax[0]=datax[0].concat(\"\",padString.substr(0,diffSTringlgh-1));\n  var code=global.get('code');\n   code=code.concat(datax[0],\"\");\n   global.set('code',code);\n   msg.payload= datax[0];\n     \n\n\n\n\n// pad second string element and save it in topic\n// only oif strnig length smaler than 20\ndiffSTringlgh=20-datax[1].length;\nconst datam=datax[1].split(\"\\r\");\n  datam[0]=datam[0].concat(\"\",padString.substr(0,diffSTringlgh-1));\n  var ziel=global.get('ziel');\n  ziel=ziel.concat(datam[0],\"\");\n  global.set('ziel',ziel);\n  msg.topic= datam[0];\n\n  msg.count=count;\nreturn msg;",
+        "func": "\nvar count=global.get('counter');\n\n\nconst datax=msg.payload.split(\";\");\nvar datac=datax[0];\nvar datam=datax[1];\n dataz=datam.split(\"\\r\");\nvar padString=\"000000000000000000000000000000\";\n// pad first string element and save it in paylaod\n// only oif strnig length smaler than 20\n let diffSTringlgh=20-(datac.length-1);\n if(diffSTringlgh>0){\n     var padSTr=padString.substr(0,diffSTringlgh-1);\n datac=datac+padSTr;\n  msg.padc=padSTr;\n }\n  var code=global.get('code');\n   code=code+datac;\n   global.set('code',code);\n   msg.payload= datac;\n    msg.c=code.length; \n\n\n\n\n// pad second string element and save it in topic\n// only oif strnig length smaler than 20\n\ndiffSTringlgh=20-(dataz[0].length-1);\n\nif(diffSTringlgh>0){\n \n  var padSz=padString.substr(0,diffSTringlgh-1);\n   dataz[0]=dataz[0]+padSz;\n   msg.padz=padSz;\n  } \n  var ziel=global.get('ziel');\n  ziel=ziel+dataz[0];\n  global.set('ziel',ziel);\n  msg.topic= dataz[0];\n  msg.z=ziel.length; \n  msg.count=count;\n  \n  count++;\n  global.set('counter',count);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1451,7 +1431,8 @@
         "y": 300,
         "wires": [
             [
-                "186feeb43e60b1cc"
+                "186feeb43e60b1cc",
+                "484526b5917b608b"
             ]
         ]
     },
@@ -1466,31 +1447,11 @@
         "wires": []
     },
     {
-        "id": "d298fe67e84328f3",
-        "type": "function",
-        "z": "92251413baef12b2",
-        "name": "",
-        "func": "\nmsg.filename='${INPUT_FILE}';\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 320,
-        "y": 160,
-        "wires": [
-            [
-                "86240aab9bd98cb8",
-                "9ef1ef537a8ebc96"
-            ]
-        ]
-    },
-    {
         "id": "9ef1ef537a8ebc96",
         "type": "debug",
         "z": "92251413baef12b2",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1498,8 +1459,58 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 690,
+        "x": 670,
         "y": 160,
+        "wires": []
+    },
+    {
+        "id": "484526b5917b608b",
+        "type": "debug",
+        "z": "92251413baef12b2",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "943e1a69b9f1f7a6",
+        "type": "file",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "filename": "testCode.txt",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 1120,
+        "y": 500,
+        "wires": [
+            [
+                "6261a77ee19d8508"
+            ]
+        ]
+    },
+    {
+        "id": "6261a77ee19d8508",
+        "type": "debug",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1280,
+        "y": 460,
         "wires": []
     }
 ]
