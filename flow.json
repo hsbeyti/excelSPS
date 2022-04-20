@@ -28,6 +28,13 @@
         "info": ""
     },
     {
+        "id": "e538af52b4727f50",
+        "type": "tab",
+        "label": "maschien status dashboard",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "66b716f45b9c6672",
         "type": "ftp",
         "host": "localhost",
@@ -53,6 +60,173 @@
         "secpol": "None",
         "secmode": "None",
         "login": false
+    },
+    {
+        "id": "73eca9aa7add77c9",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 2,
+        "width": 26,
+        "height": 1
+    },
+    {
+        "id": "e715640476905792",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 3,
+        "width": 26,
+        "height": 1
+    },
+    {
+        "id": "c7222e6a54fe6b52",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 5,
+        "width": 26,
+        "height": 1
+    },
+    {
+        "id": "c7f74b3f532eb8c7",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 6,
+        "width": 26,
+        "height": 1
+    },
+    {
+        "id": "ad9d017a783ac43e",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 8,
+        "width": 26,
+        "height": 1
+    },
+    {
+        "id": "3574fcb9cb741b41",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 9,
+        "width": 26,
+        "height": 1
+    },
+    {
+        "id": "2a055f3af225929c",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 11,
+        "width": 26,
+        "height": 1
+    },
+    {
+        "id": "4717fc68ee600db2",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 12,
+        "width": 26,
+        "height": 1
+    },
+    {
+        "id": "d07e775da172b0e5",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 14,
+        "width": 26,
+        "height": 1
+    },
+    {
+        "id": "63cbfeb959176b3c",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 15,
+        "width": 26,
+        "height": 1
+    },
+    {
+        "id": "6560d2be228686fe",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 17,
+        "width": 26,
+        "height": 1
+    },
+    {
+        "id": "9444671333dcb301",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 18,
+        "width": 26,
+        "height": 1
+    },
+    {
+        "id": "955f0f68d82aa161",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 20,
+        "width": 22,
+        "height": 1
+    },
+    {
+        "id": "14dfb4c76a6581b4",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 21,
+        "width": 22,
+        "height": 1
+    },
+    {
+        "id": "29aac6db4644a543",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://192.168.86.10:4840",
+        "secpol": "None",
+        "secmode": "None",
+        "login": false
+    },
+    {
+        "id": "1cb64610926fbb25",
+        "type": "ui_group",
+        "name": "Maschine Status",
+        "tab": "24c0a90e796435ac",
+        "order": 1,
+        "disp": true,
+        "width": 30,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "24c0a90e796435ac",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
     },
     {
         "id": "769555527b757e9d",
@@ -1460,7 +1634,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 650,
-        "y": 200,
+        "y": 180,
         "wires": []
     },
     {
@@ -1512,5 +1686,535 @@
         "x": 1280,
         "y": 460,
         "wires": []
+    },
+    {
+        "id": "aa21a03b36b671ee",
+        "type": "inject",
+        "z": "e538af52b4727f50",
+        "name": "Steurung ein End point in SPS",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=9;datatype=Boolean",
+        "payloadType": "date",
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "c3384702328f613c"
+            ]
+        ]
+    },
+    {
+        "id": "c3384702328f613c",
+        "type": "OpcUa-Client",
+        "z": "e538af52b4727f50",
+        "endpoint": "29aac6db4644a543",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "name": "",
+        "x": 480,
+        "y": 60,
+        "wires": [
+            [
+                "d4feab48beb9fdc8"
+            ]
+        ]
+    },
+    {
+        "id": "a7864e1eb618ff72",
+        "type": "ui_text",
+        "z": "e538af52b4727f50",
+        "group": "1cb64610926fbb25",
+        "order": 1,
+        "width": 4,
+        "height": 2,
+        "name": "",
+        "label": "Steurung ein",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1110,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "ad62f4f690edc7be",
+        "type": "debug",
+        "z": "e538af52b4727f50",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "d3b318d2b1e005b5",
+        "type": "inject",
+        "z": "e538af52b4727f50",
+        "name": "Auto maschine status End point in SPS",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=11;datatype=Boolean",
+        "payloadType": "date",
+        "x": 160,
+        "y": 100,
+        "wires": [
+            [
+                "c3384702328f613c"
+            ]
+        ]
+    },
+    {
+        "id": "73fe2320395f2d27",
+        "type": "inject",
+        "z": "e538af52b4727f50",
+        "name": "Hand maschine status End point in SPS",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=10;datatype=Boolean",
+        "payloadType": "date",
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "c3384702328f613c"
+            ]
+        ]
+    },
+    {
+        "id": "444559ff7457cfd7",
+        "type": "inject",
+        "z": "e538af52b4727f50",
+        "name": "benutzer name End point in SPS",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=13;datatype=String",
+        "payloadType": "date",
+        "x": 140,
+        "y": 180,
+        "wires": [
+            [
+                "c3384702328f613c"
+            ]
+        ]
+    },
+    {
+        "id": "61a1fa54cb5d2ab6",
+        "type": "function",
+        "z": "e538af52b4727f50",
+        "name": "get Steurung",
+        "func": "\nmsg.payload=msg.payload[0];\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 120,
+        "wires": [
+            [
+                "a7864e1eb618ff72"
+            ]
+        ]
+    },
+    {
+        "id": "d4feab48beb9fdc8",
+        "type": "join",
+        "z": "e538af52b4727f50",
+        "name": "Create one messsage out of seven ",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "7",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 740,
+        "y": 60,
+        "wires": [
+            [
+                "61a1fa54cb5d2ab6",
+                "ad62f4f690edc7be",
+                "07cae95480103199",
+                "add4a078b0a82bbf",
+                "d93f60f54c760ad3",
+                "4973258121de3fcc",
+                "38e4eb74433c136c",
+                "1d86804ae69d74a2"
+            ]
+        ]
+    },
+    {
+        "id": "b0c2c329e3c4f4fc",
+        "type": "inject",
+        "z": "e538af52b4727f50",
+        "name": "Fehler in Maschine End point in SPS",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=12;datatype=Boolean",
+        "payloadType": "date",
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "c3384702328f613c"
+            ]
+        ]
+    },
+    {
+        "id": "891a1a36c6b5e301",
+        "type": "inject",
+        "z": "e538af52b4727f50",
+        "name": "Messewert End point SPS",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=15;datatype=number",
+        "payloadType": "date",
+        "x": 120,
+        "y": 260,
+        "wires": [
+            [
+                "c3384702328f613c"
+            ]
+        ]
+    },
+    {
+        "id": "2b885eae42133e0c",
+        "type": "inject",
+        "z": "e538af52b4727f50",
+        "name": "System time in End point SPS",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "ns=4;i=14;datatype=number",
+        "payloadType": "date",
+        "x": 130,
+        "y": 300,
+        "wires": [
+            [
+                "c3384702328f613c"
+            ]
+        ]
+    },
+    {
+        "id": "5f2cc9a5244f3fb1",
+        "type": "ui_text",
+        "z": "e538af52b4727f50",
+        "group": "1cb64610926fbb25",
+        "order": 4,
+        "width": 4,
+        "height": 2,
+        "name": "",
+        "label": "Auto",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1090,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "07cae95480103199",
+        "type": "function",
+        "z": "e538af52b4727f50",
+        "name": "get Auto",
+        "func": "\nmsg.payload=msg.payload[1];\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 200,
+        "wires": [
+            [
+                "5f2cc9a5244f3fb1"
+            ]
+        ]
+    },
+    {
+        "id": "21b1c6379dc3bcef",
+        "type": "ui_text",
+        "z": "e538af52b4727f50",
+        "group": "1cb64610926fbb25",
+        "order": 7,
+        "width": 4,
+        "height": 2,
+        "name": "",
+        "label": "Hand",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1090,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "add4a078b0a82bbf",
+        "type": "function",
+        "z": "e538af52b4727f50",
+        "name": "get Hand",
+        "func": "\nmsg.payload=msg.payload[2];\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 280,
+        "wires": [
+            [
+                "21b1c6379dc3bcef"
+            ]
+        ]
+    },
+    {
+        "id": "5f867577b69b9f9d",
+        "type": "ui_text",
+        "z": "e538af52b4727f50",
+        "group": "1cb64610926fbb25",
+        "order": 10,
+        "width": 4,
+        "height": 2,
+        "name": "",
+        "label": "Benutzer",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1100,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "d93f60f54c760ad3",
+        "type": "function",
+        "z": "e538af52b4727f50",
+        "name": "get benutzer",
+        "func": "\nmsg.payload=msg.payload[3];\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 360,
+        "wires": [
+            [
+                "5f867577b69b9f9d"
+            ]
+        ]
+    },
+    {
+        "id": "824c1f8137b3b992",
+        "type": "ui_text",
+        "z": "e538af52b4727f50",
+        "group": "1cb64610926fbb25",
+        "order": 13,
+        "width": 4,
+        "height": 2,
+        "name": "",
+        "label": "Fehler",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1090,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "4973258121de3fcc",
+        "type": "function",
+        "z": "e538af52b4727f50",
+        "name": "get Fehler",
+        "func": "\nmsg.payload=msg.payload[4];\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 440,
+        "wires": [
+            [
+                "824c1f8137b3b992"
+            ]
+        ]
+    },
+    {
+        "id": "3d354d6ff2407cf4",
+        "type": "ui_text",
+        "z": "e538af52b4727f50",
+        "group": "1cb64610926fbb25",
+        "order": 16,
+        "width": 4,
+        "height": 2,
+        "name": "",
+        "label": "Messwert",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1100,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "38e4eb74433c136c",
+        "type": "function",
+        "z": "e538af52b4727f50",
+        "name": "get Messwert",
+        "func": "\nmsg.payload=msg.payload[5];\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 520,
+        "wires": [
+            [
+                "3d354d6ff2407cf4"
+            ]
+        ]
+    },
+    {
+        "id": "4e742562ebe9183b",
+        "type": "ui_text",
+        "z": "e538af52b4727f50",
+        "group": "1cb64610926fbb25",
+        "order": 19,
+        "width": 8,
+        "height": 2,
+        "name": "",
+        "label": "System Time",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1110,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "1d86804ae69d74a2",
+        "type": "moment",
+        "z": "e538af52b4727f50",
+        "name": "hh:mm:ss",
+        "topic": "",
+        "input": "payload.timestamp",
+        "inputType": "msg",
+        "inTz": "Europe/Berlin",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "",
+        "locale": "de-DE",
+        "output": "",
+        "outputType": "msg",
+        "outTz": "Europe/Berlin",
+        "x": 860,
+        "y": 600,
+        "wires": [
+            [
+                "4e742562ebe9183b"
+            ]
+        ]
     }
 ]
