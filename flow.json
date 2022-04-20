@@ -62,146 +62,6 @@
         "login": false
     },
     {
-        "id": "73eca9aa7add77c9",
-        "type": "ui_spacer",
-        "z": "e538af52b4727f50",
-        "name": "spacer",
-        "group": "1cb64610926fbb25",
-        "order": 2,
-        "width": 26,
-        "height": 1
-    },
-    {
-        "id": "e715640476905792",
-        "type": "ui_spacer",
-        "z": "e538af52b4727f50",
-        "name": "spacer",
-        "group": "1cb64610926fbb25",
-        "order": 3,
-        "width": 26,
-        "height": 1
-    },
-    {
-        "id": "c7222e6a54fe6b52",
-        "type": "ui_spacer",
-        "z": "e538af52b4727f50",
-        "name": "spacer",
-        "group": "1cb64610926fbb25",
-        "order": 5,
-        "width": 26,
-        "height": 1
-    },
-    {
-        "id": "c7f74b3f532eb8c7",
-        "type": "ui_spacer",
-        "z": "e538af52b4727f50",
-        "name": "spacer",
-        "group": "1cb64610926fbb25",
-        "order": 6,
-        "width": 26,
-        "height": 1
-    },
-    {
-        "id": "ad9d017a783ac43e",
-        "type": "ui_spacer",
-        "z": "e538af52b4727f50",
-        "name": "spacer",
-        "group": "1cb64610926fbb25",
-        "order": 8,
-        "width": 26,
-        "height": 1
-    },
-    {
-        "id": "3574fcb9cb741b41",
-        "type": "ui_spacer",
-        "z": "e538af52b4727f50",
-        "name": "spacer",
-        "group": "1cb64610926fbb25",
-        "order": 9,
-        "width": 26,
-        "height": 1
-    },
-    {
-        "id": "2a055f3af225929c",
-        "type": "ui_spacer",
-        "z": "e538af52b4727f50",
-        "name": "spacer",
-        "group": "1cb64610926fbb25",
-        "order": 11,
-        "width": 26,
-        "height": 1
-    },
-    {
-        "id": "4717fc68ee600db2",
-        "type": "ui_spacer",
-        "z": "e538af52b4727f50",
-        "name": "spacer",
-        "group": "1cb64610926fbb25",
-        "order": 12,
-        "width": 26,
-        "height": 1
-    },
-    {
-        "id": "d07e775da172b0e5",
-        "type": "ui_spacer",
-        "z": "e538af52b4727f50",
-        "name": "spacer",
-        "group": "1cb64610926fbb25",
-        "order": 14,
-        "width": 26,
-        "height": 1
-    },
-    {
-        "id": "63cbfeb959176b3c",
-        "type": "ui_spacer",
-        "z": "e538af52b4727f50",
-        "name": "spacer",
-        "group": "1cb64610926fbb25",
-        "order": 15,
-        "width": 26,
-        "height": 1
-    },
-    {
-        "id": "6560d2be228686fe",
-        "type": "ui_spacer",
-        "z": "e538af52b4727f50",
-        "name": "spacer",
-        "group": "1cb64610926fbb25",
-        "order": 17,
-        "width": 26,
-        "height": 1
-    },
-    {
-        "id": "9444671333dcb301",
-        "type": "ui_spacer",
-        "z": "e538af52b4727f50",
-        "name": "spacer",
-        "group": "1cb64610926fbb25",
-        "order": 18,
-        "width": 26,
-        "height": 1
-    },
-    {
-        "id": "955f0f68d82aa161",
-        "type": "ui_spacer",
-        "z": "e538af52b4727f50",
-        "name": "spacer",
-        "group": "1cb64610926fbb25",
-        "order": 20,
-        "width": 22,
-        "height": 1
-    },
-    {
-        "id": "14dfb4c76a6581b4",
-        "type": "ui_spacer",
-        "z": "e538af52b4727f50",
-        "name": "spacer",
-        "group": "1cb64610926fbb25",
-        "order": 21,
-        "width": 22,
-        "height": 1
-    },
-    {
         "id": "29aac6db4644a543",
         "type": "OpcUa-Endpoint",
         "endpoint": "opc.tcp://192.168.86.10:4840",
@@ -216,8 +76,8 @@
         "tab": "24c0a90e796435ac",
         "order": 1,
         "disp": true,
-        "width": 30,
-        "collapse": false,
+        "width": 11,
+        "collapse": true,
         "className": ""
     },
     {
@@ -227,6 +87,163 @@
         "icon": "dashboard",
         "disabled": false,
         "hidden": false
+    },
+    {
+        "id": "4d9aa8d6e4d009a1",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "d567f79677389e3b",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 2,
+        "width": 11,
+        "height": 1
+    },
+    {
+        "id": "92db3cb8e0393d57",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 4,
+        "width": 11,
+        "height": 1
+    },
+    {
+        "id": "542226b9162f1695",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 6,
+        "width": 11,
+        "height": 1
+    },
+    {
+        "id": "b9fa47c8bcd642da",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 8,
+        "width": 11,
+        "height": 1
+    },
+    {
+        "id": "3e491abca81eae76",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 10,
+        "width": 11,
+        "height": 1
+    },
+    {
+        "id": "3094c93fccf64c4e",
+        "type": "ui_spacer",
+        "z": "e538af52b4727f50",
+        "name": "spacer",
+        "group": "1cb64610926fbb25",
+        "order": 12,
+        "width": 11,
+        "height": 1
     },
     {
         "id": "769555527b757e9d",
@@ -1400,13 +1417,13 @@
         "type": "file in",
         "z": "92251413baef12b2",
         "name": "",
-        "filename": "Export_Silierbuehne.txt",
+        "filename": "/mnt/winserver1/Export_Silierbuehne.txt",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 290,
+        "x": 340,
         "y": 180,
         "wires": [
             [
@@ -1740,23 +1757,6 @@
         ]
     },
     {
-        "id": "a7864e1eb618ff72",
-        "type": "ui_text",
-        "z": "e538af52b4727f50",
-        "group": "1cb64610926fbb25",
-        "order": 1,
-        "width": 4,
-        "height": 2,
-        "name": "",
-        "label": "Steurung ein",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 1110,
-        "y": 120,
-        "wires": []
-    },
-    {
         "id": "ad62f4f690edc7be",
         "type": "debug",
         "z": "e538af52b4727f50",
@@ -1872,7 +1872,7 @@
         "y": 120,
         "wires": [
             [
-                "a7864e1eb618ff72"
+                "19dffb82697a7019"
             ]
         ]
     },
@@ -1996,23 +1996,6 @@
         ]
     },
     {
-        "id": "5f2cc9a5244f3fb1",
-        "type": "ui_text",
-        "z": "e538af52b4727f50",
-        "group": "1cb64610926fbb25",
-        "order": 4,
-        "width": 4,
-        "height": 2,
-        "name": "",
-        "label": "Auto",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 1090,
-        "y": 200,
-        "wires": []
-    },
-    {
         "id": "07cae95480103199",
         "type": "function",
         "z": "e538af52b4727f50",
@@ -2027,26 +2010,9 @@
         "y": 200,
         "wires": [
             [
-                "5f2cc9a5244f3fb1"
+                "b00ba0b78972ec7c"
             ]
         ]
-    },
-    {
-        "id": "21b1c6379dc3bcef",
-        "type": "ui_text",
-        "z": "e538af52b4727f50",
-        "group": "1cb64610926fbb25",
-        "order": 7,
-        "width": 4,
-        "height": 2,
-        "name": "",
-        "label": "Hand",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 1090,
-        "y": 280,
-        "wires": []
     },
     {
         "id": "add4a078b0a82bbf",
@@ -2063,7 +2029,7 @@
         "y": 280,
         "wires": [
             [
-                "21b1c6379dc3bcef"
+                "549a44f9717e9eb4"
             ]
         ]
     },
@@ -2072,9 +2038,9 @@
         "type": "ui_text",
         "z": "e538af52b4727f50",
         "group": "1cb64610926fbb25",
-        "order": 10,
-        "width": 4,
-        "height": 2,
+        "order": 1,
+        "width": 0,
+        "height": 0,
         "name": "",
         "label": "Benutzer",
         "format": "{{msg.payload}}",
@@ -2104,23 +2070,6 @@
         ]
     },
     {
-        "id": "824c1f8137b3b992",
-        "type": "ui_text",
-        "z": "e538af52b4727f50",
-        "group": "1cb64610926fbb25",
-        "order": 13,
-        "width": 4,
-        "height": 2,
-        "name": "",
-        "label": "Fehler",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 1090,
-        "y": 440,
-        "wires": []
-    },
-    {
         "id": "4973258121de3fcc",
         "type": "function",
         "z": "e538af52b4727f50",
@@ -2135,7 +2084,7 @@
         "y": 440,
         "wires": [
             [
-                "824c1f8137b3b992"
+                "f25a76f14ac591b5"
             ]
         ]
     },
@@ -2144,9 +2093,9 @@
         "type": "ui_text",
         "z": "e538af52b4727f50",
         "group": "1cb64610926fbb25",
-        "order": 16,
-        "width": 4,
-        "height": 2,
+        "order": 13,
+        "width": 0,
+        "height": 0,
         "name": "",
         "label": "Messwert",
         "format": "{{msg.payload}}",
@@ -2180,9 +2129,9 @@
         "type": "ui_text",
         "z": "e538af52b4727f50",
         "group": "1cb64610926fbb25",
-        "order": 19,
-        "width": 8,
-        "height": 2,
+        "order": 11,
+        "width": 0,
+        "height": 0,
         "name": "",
         "label": "System Time",
         "format": "{{msg.payload}}",
@@ -2209,12 +2158,136 @@
         "output": "",
         "outputType": "msg",
         "outTz": "Europe/Berlin",
-        "x": 860,
-        "y": 600,
+        "x": 880,
+        "y": 580,
         "wires": [
             [
                 "4e742562ebe9183b"
             ]
         ]
+    },
+    {
+        "id": "19dffb82697a7019",
+        "type": "ui_led",
+        "z": "e538af52b4727f50",
+        "order": 7,
+        "group": "1cb64610926fbb25",
+        "width": 0,
+        "height": 0,
+        "label": "Steurung",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "Steurung",
+        "x": 1100,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "b00ba0b78972ec7c",
+        "type": "ui_led",
+        "z": "e538af52b4727f50",
+        "order": 3,
+        "group": "1cb64610926fbb25",
+        "width": 0,
+        "height": 0,
+        "label": "Auto",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "Auto",
+        "x": 1090,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "549a44f9717e9eb4",
+        "type": "ui_led",
+        "z": "e538af52b4727f50",
+        "order": 5,
+        "group": "1cb64610926fbb25",
+        "width": 0,
+        "height": 0,
+        "label": "Hand",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "Hand",
+        "x": 1120,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "f25a76f14ac591b5",
+        "type": "ui_led",
+        "z": "e538af52b4727f50",
+        "order": 9,
+        "group": "1cb64610926fbb25",
+        "width": 0,
+        "height": 0,
+        "label": "Fehler",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "true",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "false",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "Fehler",
+        "x": 1120,
+        "y": 440,
+        "wires": []
     }
 ]
