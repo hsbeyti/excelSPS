@@ -253,7 +253,7 @@
         "type": "debug",
         "z": "2fd09629f2e4ee90",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -261,8 +261,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 950,
-        "y": 440,
+        "x": 870,
+        "y": 420,
         "wires": []
     },
     {
@@ -1232,8 +1232,8 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 400,
-        "y": 200,
+        "x": 290,
+        "y": 180,
         "wires": [
             [
                 "2cb8246b788c68f4"
@@ -1293,7 +1293,7 @@
         "type": "debug",
         "z": "92251413baef12b2",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1394,7 +1394,7 @@
         "type": "function",
         "z": "92251413baef12b2",
         "name": "create one striung for cods and ziele",
-        "func": "\nvar count=global.get('counter');\n\n\nconst datax=msg.payload.split(\";\");\nvar datac=datax[0];\nvar datam=datax[1];\n dataz=datam.split(\"\\r\");\nvar padString=\"000000000000000000000000000000\";\n// pad first string element and save it in paylaod\n// only oif strnig length smaler than 20\n let diffSTringlgh=20-(datac.length-1);\n if(diffSTringlgh>0){\n     var padSTr=padString.substr(0,diffSTringlgh-1);\n datac=datac+padSTr;\n  msg.padc=padSTr;\n }\n  var code=global.get('code');\n   code=code+datac;\n   global.set('code',code);\n   msg.payload= datac;\n    msg.c=code.length; \n\n\n\n\n// pad second string element and save it in topic\n// only oif strnig length smaler than 20\n\ndiffSTringlgh=20-(dataz[0].length-1);\n\nif(diffSTringlgh>0){\n \n  var padSz=padString.substr(0,diffSTringlgh-1);\n   dataz[0]=dataz[0]+padSz;\n   msg.padz=padSz;\n  } \n  var ziel=global.get('ziel');\n  ziel=ziel+dataz[0];\n  global.set('ziel',ziel);\n  msg.topic= dataz[0];\n  msg.z=ziel.length; \n  msg.count=count;\n  \n  count++;\n  global.set('counter',count);\nreturn msg;",
+        "func": "// this function is intended to split a code pair read form CSV file as single line\n// and concatnate them to a separate strings, one for code and one for ziele\n// it checks if their lenght are less than 20, then it pads the necessar charachters\n// the SPS expects two strings one for codes and one for Zieles, each code/Ziel string must\n// conatisn all code/ziele and each code/ziel must be of 30 charachter length\n// example of code strings\n//001512018012913023080015120180129130231000151201801291302315001512018012913023160015120180\n\nvar countCodeZielePair=global.get('counter');\n\n// example of a code ziele pair : 00151201801291302308;000001047445\n// recieved in msg.payload\nvar CodeZielePair=msg.payload.split(\";\");\nvar dataCode=CodeZielePair[0];//00151201801291302308\nvar dataZiele=CodeZielePair[1];//000001047445\n//remove \\r from the end of the dataziele\n var temp=dataZiele.split(\"\\r\");\n dataZiele=temp[0];\n //temp[1] will have \\r\n var padString=\"##################\";// only 18 characters\n \n//======================\n// process code\n//======================= \n\n// pad only if string code length is smaller than 20 characters\n let diffStringlgthCode=20-(dataCode.length-1);\n if (diffStringlgthCode>0){\n     var toPadStrcode=padString.substr(0,diffStringlgthCode-1);\n     dataCode=dataCode+toPadStrcode;// pad it at the end of the code\n    //msg.padc=toPadStrcode;// for debug purpose\n  }\n  //append new code to the global var code\n  var code=global.get('code');\n  code=code+dataCode;\n  global.set('code',code);\n  // for debuging purpose \n    //msg.payload= dataCode;\n    //msg.c=code.length; \n\n\n//======================\n// process ziele\n//=======================\n// pad only if string zile length is smaler than 20 charachters\n diffStringlgthZiele=20-(dataZiele.length-1);\n\n if(diffStringlgthZiele>0){\n   var toPadStrZile=padString.substr(0,diffStringlgthZiele-1);\n   dataZiele=dataZiele+toPadStrZile;\n   // for debuging purpose \n    //msg.padz=toPadStrZile;\n  } \n  //append new ziele to the global var ziele\n  var ziel=global.get('ziel');\n  ziel=ziel+dataZiele;\n  global.set('ziel',ziel);\n  // for debuging purpose \n   //msg.topic= dataZiele;\n   //msg.z=ziel.length; \n  // for debuging purpose  \n   //msg.countCodeZielePair=countCodeZielePair;\n  // increment counter for code Ziele pair and save it globally\n  countCodeZielePair++;\n  global.set('counter',countCodeZielePair);\n  \nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1459,8 +1459,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 670,
-        "y": 160,
+        "x": 650,
+        "y": 200,
         "wires": []
     },
     {
