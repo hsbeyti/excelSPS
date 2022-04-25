@@ -35,39 +35,40 @@
         "info": ""
     },
     {
-        "id": "66b716f45b9c6672",
-        "type": "ftp",
-        "host": "localhost",
-        "port": "",
-        "secureOptions": "",
-        "user": "hmi",
-        "connTimeout": "",
-        "pasvTimeout": "",
-        "keepalive": ""
-    },
-    {
         "id": "55182065ac22cf83",
         "type": "OpcUa-Endpoint",
-        "endpoint": "opc.tcp://192.168.86.10:4840",
+        "endpoint": "${IP_X}",
         "secpol": "None",
         "secmode": "None",
-        "login": false
+        "none": false,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
     },
     {
         "id": "403215d057ac2a3a",
         "type": "OpcUa-Endpoint",
-        "endpoint": "opc.tcp://192.168.86.10:4840",
+        "endpoint": "${IP_X}",
         "secpol": "None",
         "secmode": "None",
-        "login": false
+        "none": false,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
     },
     {
         "id": "29aac6db4644a543",
         "type": "OpcUa-Endpoint",
-        "endpoint": "opc.tcp://192.168.86.10:4840",
+        "endpoint": "${IP_X}",
         "secpol": "None",
         "secmode": "None",
-        "login": false
+        "none": false,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
     },
     {
         "id": "1cb64610926fbb25",
@@ -259,7 +260,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1130,
-        "y": 220,
+        "y": 260,
         "wires": []
     },
     {
@@ -280,7 +281,7 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "ns=4;i=20;datatype=Boolean",
+        "topic": "ns=4;i=16;datatype=Boolean",
         "payload": "",
         "payloadType": "date",
         "x": 90,
@@ -306,6 +307,7 @@
         "localkeyfile": "",
         "securitymode": "None",
         "securitypolicy": "None",
+        "folderName4PKI": "",
         "name": "",
         "x": 340,
         "y": 60,
@@ -328,7 +330,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1050,
+        "x": 970,
         "y": 100,
         "wires": []
     },
@@ -430,6 +432,7 @@
         "localkeyfile": "",
         "securitymode": "None",
         "securitypolicy": "None",
+        "folderName4PKI": "",
         "name": "",
         "x": 800,
         "y": 380,
@@ -624,7 +627,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 990,
-        "y": 60,
+        "y": 40,
         "wires": []
     },
     {
@@ -948,6 +951,40 @@
         ]
     },
     {
+        "id": "943e1a69b9f1f7a6",
+        "type": "file",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "filename": "testCode.txt",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 1120,
+        "y": 500,
+        "wires": [
+            [
+                "6261a77ee19d8508"
+            ]
+        ]
+    },
+    {
+        "id": "6261a77ee19d8508",
+        "type": "debug",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1280,
+        "y": 460,
+        "wires": []
+    },
+    {
         "id": "3f264ffe5bdf741a",
         "type": "inject",
         "z": "91a08dedd804fe47",
@@ -991,6 +1028,7 @@
         "localkeyfile": "",
         "securitymode": "None",
         "securitypolicy": "None",
+        "folderName4PKI": "",
         "name": "",
         "x": 480,
         "y": 120,
@@ -1417,7 +1455,7 @@
         "type": "file in",
         "z": "92251413baef12b2",
         "name": "",
-        "filename": "/mnt/winserver1/Export_Silierbuehne.txt",
+        "filename": "/mnt/win_share/Export_Silierbuehne.txt",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
@@ -1450,6 +1488,7 @@
         "once": true,
         "onceDelay": "1",
         "topic": "",
+        "payload": "",
         "payloadType": "date",
         "x": 320,
         "y": 60,
@@ -1671,40 +1710,6 @@
         "wires": []
     },
     {
-        "id": "943e1a69b9f1f7a6",
-        "type": "file",
-        "z": "2fd09629f2e4ee90",
-        "name": "",
-        "filename": "testCode.txt",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 1120,
-        "y": 500,
-        "wires": [
-            [
-                "6261a77ee19d8508"
-            ]
-        ]
-    },
-    {
-        "id": "6261a77ee19d8508",
-        "type": "debug",
-        "z": "2fd09629f2e4ee90",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1280,
-        "y": 460,
-        "wires": []
-    },
-    {
         "id": "aa21a03b36b671ee",
         "type": "inject",
         "z": "e538af52b4727f50",
@@ -1747,6 +1752,7 @@
         "localkeyfile": "",
         "securitymode": "None",
         "securitypolicy": "None",
+        "folderName4PKI": "",
         "name": "",
         "x": 480,
         "y": 60,
