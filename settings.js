@@ -20,7 +20,7 @@
  *
  **/
 
-//process.env.IP_X ="opc.tcp://192.168.0.60:12403",
+process.env.IP_X ="opc.tcp://192.168.86.10:4840",
 //process.env.MYSQL_IP="192.168.16.2",
 //process.env.MYSQL_USR="root",
 //process.env.MYSQL_PW="19996",

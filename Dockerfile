@@ -1,4 +1,4 @@
-FROM hsbeyti/indaus:baseimage1.1
+FROM hsbeyti/indaus:latest
 
 # Copy package.json to the WORKDIR so npm builds all
 # of your added nodes modules for Node-RED
