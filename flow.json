@@ -291,8 +291,8 @@
         "securitymode": "None",
         "securitypolicy": "None",
         "folderName4PKI": "",
-        "name": "Read flag",
-        "x": 580,
+        "name": "Read flag from SPS",
+        "x": 620,
         "y": 120,
         "wires": [
             [
@@ -314,7 +314,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 610,
+        "x": 450,
         "y": 600,
         "wires": []
     },
@@ -337,8 +337,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 690,
-        "y": 220,
+        "x": 710,
+        "y": 200,
         "wires": [
             [
                 "538ade89f3c11950"
@@ -373,8 +373,8 @@
         "securitypolicy": "None",
         "folderName4PKI": "",
         "name": "",
-        "x": 460,
-        "y": 500,
+        "x": 440,
+        "y": 540,
         "wires": [
             [
                 "b8af918b16f92f72"
@@ -385,12 +385,13 @@
         "id": "969b79078d436af2",
         "type": "OpcUa-Item",
         "z": "91a08dedd804fe47",
+        "d": true,
         "item": "ns=4;i=17",
         "datatype": "Boolean",
         "value": "",
         "name": "set start transfer false",
         "x": 160,
-        "y": 520,
+        "y": 540,
         "wires": [
             [
                 "fe82fef9b01b0590",
@@ -410,8 +411,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1010,
-        "y": 100,
+        "x": 870,
+        "y": 120,
         "wires": []
     },
     {
@@ -456,8 +457,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 150,
-        "y": 640,
+        "x": 110,
+        "y": 600,
         "wires": []
     },
     {
@@ -473,8 +474,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1010,
-        "y": 220,
+        "x": 650,
+        "y": 300,
         "wires": []
     },
     {
@@ -488,8 +489,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 100,
-        "y": 460,
+        "x": 120,
+        "y": 480,
         "wires": [
             [
                 "969b79078d436af2"
@@ -693,6 +694,13 @@
                 "pt": "msg",
                 "to": "false",
                 "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "dataReadFromFile",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
             }
         ],
         "action": "",
@@ -713,7 +721,7 @@
         "type": "function",
         "z": "92251413baef12b2",
         "name": "create and store in memory one string for codes and one for ziele",
-        "func": "// this function is intended to split a code pair read form CSV file as single line\n// and concatnate them to a separate strings, one for code and one for ziele\n// it checks if their lenght are less than 20, then it pads the necessar charachters\n// the SPS expects two strings one for codes and one for Zieles, each code/Ziel string must\n// conatisn all code/ziele and each code/ziel must be of 30 charachter length\n// example of code strings\n//001512018012913023080015120180129130231000151201801291302315001512018012913023160015120180\n\nvar countCodeZielePair=global.get('counter');\n\n// example of a code ziele pair : 00151201801291302308;000001047445\n// recieved in msg.payload\nvar CodeZielePair=msg.payload.split(\";\");\nvar dataCode=CodeZielePair[0];//00151201801291302308\nvar dataZiele=CodeZielePair[1];//000001047445\n//remove \\r from the end of the dataziele\n var temp=dataZiele.split(\"\\r\");\n dataZiele=temp[0];\n //temp[1] will have \\r\n var padString=\"0000000000000000\";// only 18 characters\n \n//======================\n// process code\n//======================= \n\n// pad only if string code length is smaller than 20 characters\n let diffStringlgthCode=20-(dataCode.length-1);\n if (diffStringlgthCode>0){\n     var toPadStrcode=padString.substr(0,diffStringlgthCode-1);\n     dataCode=dataCode+toPadStrcode;// pad it at the end of the code\n    //msg.padc=toPadStrcode;// for debug purpose\n  }\n  //append new code to the global var code\n  var code=global.get('code');\n  code=code+dataCode;\n  global.set('code',code);\n  // for debuging purpose \n    //msg.payload= dataCode;\n    //msg.c=code.length; \n\n\n//======================\n// process ziele\n//=======================\n// pad only if string zile length is smaler than 20 charachters\n diffStringlgthZiele=20-(dataZiele.length-1);\n\n if(diffStringlgthZiele>0){\n   var toPadStrZile=padString.substr(0,diffStringlgthZiele-1);\n   dataZiele=dataZiele+toPadStrZile;\n   // for debuging purpose \n    //msg.padz=toPadStrZile;\n  } \n  //append new ziele to the global var ziele\n  var ziel=global.get('ziel');\n  ziel=ziel+dataZiele;\n  global.set('ziel',ziel);\n  // for debuging purpose \n   //msg.topic= dataZiele;\n   //msg.z=ziel.length; \n  // for debuging purpose  \n   //msg.countCodeZielePair=countCodeZielePair;\n  // increment counter for code/Ziele pair and save it globally\n  countCodeZielePair++;\n  global.set('counter',countCodeZielePair);\n  \nreturn msg;",
+        "func": "// this function is intended to split a code pair read form CSV file as single line\n// and concatnate them to a separate strings, one for code and one for ziele\n// it checks if their lenght are less than 20, then it pads the necessar charachters\n// the SPS expects two strings one for codes and one for Zieles, each code/Ziel string must\n// conatisn all code/ziele and each code/ziel must be of 30 charachter length\n// example of code strings\n//001512018012913023080015120180129130231000151201801291302315001512018012913023160015120180\n\nvar countCodeZielePair=global.get('counter');\n\n// example of a code ziele pair : 00151201801291302308;000001047445\n// recieved in msg.payload\nvar CodeZielePair=msg.payload.split(\";\");\nvar dataCode=CodeZielePair[0];//00151201801291302308\nvar dataZiele=CodeZielePair[1];//000001047445\n//remove \\r from the end of the dataziele\n var temp=dataZiele.split(\"\\r\");\n dataZiele=temp[0];\n //temp[1] will have \\r\n var padString=\"0000000000000000\";// only 18 characters\n \n//======================\n// process code\n//======================= \n\n// pad only if string code length is smaller than 20 characters\n let diffStringlgthCode=20-(dataCode.length-1);\n if (diffStringlgthCode>0){\n     var toPadStrcode=padString.substr(0,diffStringlgthCode-1);\n     dataCode=dataCode+toPadStrcode;// pad it at the end of the code\n    //msg.padc=toPadStrcode;// for debug purpose\n  }\n  //append new code to the global var code\n  var code=global.get('code');\n  code=code+dataCode;\n  global.set('code',code);\n  // for debuging purpose \n    //msg.payload= dataCode;\n    //msg.c=code.length; \n\n\n//======================\n// process ziele\n//=======================\n// pad only if string zile length is smaler than 20 charachters\n diffStringlgthZiele=20-(dataZiele.length-1);\n\n if(diffStringlgthZiele>0){\n   var toPadStrZile=padString.substr(0,diffStringlgthZiele-1);\n   dataZiele=dataZiele+toPadStrZile;\n   // for debuging purpose \n    //msg.padz=toPadStrZile;\n  } \n  //append new ziele to the global var ziele\n  var ziel=global.get('ziel');\n  ziel=ziel+dataZiele;\n  global.set('ziel',ziel);\n  // for debuging purpose \n   //msg.topic= dataZiele;\n   //msg.z=ziel.length; \n  // for debuging purpose  \n   msg.countCodeZielePair=countCodeZielePair;\n  // increment counter for code/Ziele pair and save it globally\n  countCodeZielePair++;\n  global.set('counter',countCodeZielePair);\n  \nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -759,7 +767,7 @@
         "type": "debug",
         "z": "92251413baef12b2",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -819,7 +827,7 @@
         "y": 200,
         "wires": [
             [
-                "86240aab9bd98cb8"
+                "e425f8233ba9d20b"
             ]
         ]
     },
@@ -845,6 +853,13 @@
                 "pt": "global",
                 "to": "false",
                 "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "dataReadFromFile",
+                "pt": "global",
+                "to": "true",
+                "tot": "bool"
             }
         ],
         "action": "",
@@ -859,6 +874,27 @@
                 "2cb8246b788c68f4",
                 "484526b5917b608b"
             ]
+        ]
+    },
+    {
+        "id": "e425f8233ba9d20b",
+        "type": "switch",
+        "z": "92251413baef12b2",
+        "name": "",
+        "property": "dataReadFromFile",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 290,
+        "y": 300,
+        "wires": [
+            []
         ]
     },
     {
@@ -989,7 +1025,8 @@
         "y": 180,
         "wires": [
             [
-                "dd286a842d7ef742"
+                "dd286a842d7ef742",
+                "a5f744e80bdd4cdd"
             ]
         ]
     },
@@ -1004,7 +1041,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 700,
+        "x": 740,
         "y": 400,
         "wires": [
             [
@@ -1029,8 +1066,8 @@
         "securitymode": "None",
         "securitypolicy": "None",
         "folderName4PKI": "",
-        "name": "send  code/zeile ocunt",
-        "x": 940,
+        "name": "send  code/zeile count to SPS",
+        "x": 960,
         "y": 460,
         "wires": [
             [
@@ -1084,7 +1121,7 @@
         "type": "debug",
         "z": "2fd09629f2e4ee90",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1092,8 +1129,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1150,
-        "y": 640,
+        "x": 1190,
+        "y": 760,
         "wires": []
     },
     {
@@ -1144,8 +1181,8 @@
         "securitymode": "None",
         "securitypolicy": "None",
         "folderName4PKI": "",
-        "name": "send Code string",
-        "x": 930,
+        "name": "send Code string to SPS",
+        "x": 950,
         "y": 580,
         "wires": [
             [
@@ -1199,10 +1236,11 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1170,
+        "x": 1150,
         "y": 240,
         "wires": []
     },
@@ -1221,49 +1259,7 @@
         "y": 640,
         "wires": [
             [
-                "011911047420797c",
-                "cfbe733c16dc6bfe"
-            ]
-        ]
-    },
-    {
-        "id": "e0f21ec2579e0832",
-        "type": "OpcUa-Client",
-        "z": "2fd09629f2e4ee90",
-        "endpoint": "55182065ac22cf83",
-        "action": "write",
-        "deadbandtype": "a",
-        "deadbandvalue": 1,
-        "time": 10,
-        "timeUnit": "s",
-        "certificate": "n",
-        "localfile": "",
-        "localkeyfile": "",
-        "securitymode": "None",
-        "securitypolicy": "None",
-        "folderName4PKI": "",
-        "name": "send lese_bereit",
-        "x": 920,
-        "y": 760,
-        "wires": [
-            [
-                "bc79a1f3ce766808"
-            ]
-        ]
-    },
-    {
-        "id": "f2c4e37d7dc784df",
-        "type": "OpcUa-Item",
-        "z": "2fd09629f2e4ee90",
-        "item": "ns=4;i=16",
-        "datatype": "Boolean",
-        "value": "true",
-        "name": "set lese_bereit true",
-        "x": 690,
-        "y": 760,
-        "wires": [
-            [
-                "e0f21ec2579e0832"
+                "011911047420797c"
             ]
         ]
     },
@@ -1332,7 +1328,7 @@
         "y": 300,
         "wires": [
             [
-                "fcafe2111ce91397"
+                "45d7a984580b3de2"
             ],
             [
                 "c7ecb443c3fa33a3"
@@ -1354,12 +1350,13 @@
         "localkeyfile": "",
         "securitymode": "None",
         "securitypolicy": "None",
-        "name": "",
-        "x": 380,
-        "y": 440,
+        "folderName4PKI": "",
+        "name": "send start (false) to SPS",
+        "x": 150,
+        "y": 500,
         "wires": [
             [
-                "0774f15776cce2ba"
+                "fa8025f7458be979"
             ]
         ]
     },
@@ -1369,40 +1366,13 @@
         "z": "2fd09629f2e4ee90",
         "item": "ns=4;i=12",
         "datatype": "Boolean",
-        "value": "",
+        "value": "false",
         "name": "get  start (false) reday",
-        "x": 160,
+        "x": 140,
         "y": 440,
         "wires": [
             [
                 "6025dc5b38ab6302"
-            ]
-        ]
-    },
-    {
-        "id": "0774f15776cce2ba",
-        "type": "change",
-        "z": "2fd09629f2e4ee90",
-        "name": "set send_data_completed to false",
-        "rules": [
-            {
-                "t": "set",
-                "p": "send_data_completed",
-                "pt": "global",
-                "to": "false",
-                "tot": "bool"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 200,
-        "y": 500,
-        "wires": [
-            [
-                "4ae79c0bd4e069e1"
             ]
         ]
     },
@@ -1430,15 +1400,15 @@
         "type": "debug",
         "z": "2fd09629f2e4ee90",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 370,
-        "y": 620,
+        "x": 130,
+        "y": 860,
         "wires": []
     },
     {
@@ -1457,12 +1427,12 @@
         "securitymode": "None",
         "securitypolicy": "None",
         "folderName4PKI": "",
-        "name": "send  start (false)",
-        "x": 390,
-        "y": 560,
+        "name": "read  start  from SPS",
+        "x": 130,
+        "y": 680,
         "wires": [
             [
-                "b0075b7d8ad4656b"
+                "c4432b7e47d2ba4a"
             ]
         ]
     },
@@ -1470,7 +1440,7 @@
         "id": "b0075b7d8ad4656b",
         "type": "change",
         "z": "2fd09629f2e4ee90",
-        "name": "",
+        "name": "set global.start to \"start\" from SPS",
         "rules": [
             {
                 "t": "set",
@@ -1485,8 +1455,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 140,
-        "y": 620,
+        "x": 180,
+        "y": 800,
         "wires": [
             [
                 "f1477860f8de0228"
@@ -1497,15 +1467,15 @@
         "id": "4ae79c0bd4e069e1",
         "type": "function",
         "z": "2fd09629f2e4ee90",
-        "name": "Read \"start\"",
-        "func": "msg.topic=\"ns=4;i=16;datatype=Boolean\";\nreturn msg;",
+        "name": "get \"start\" read to read",
+        "func": "msg.topic=\"ns=4;i=12;datatype=Boolean\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 130,
-        "y": 560,
+        "x": 140,
+        "y": 620,
         "wires": [
             [
                 "4bbfd10282faf01d"
@@ -1516,7 +1486,6 @@
         "id": "943e1a69b9f1f7a6",
         "type": "file",
         "z": "2fd09629f2e4ee90",
-        "d": true,
         "name": "",
         "filename": "testCode.txt",
         "appendNewline": true,
@@ -1536,7 +1505,7 @@
         "type": "debug",
         "z": "2fd09629f2e4ee90",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1548,31 +1517,6 @@
         "wires": []
     },
     {
-        "id": "fcafe2111ce91397",
-        "type": "delay",
-        "z": "2fd09629f2e4ee90",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "2",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 1060,
-        "y": 300,
-        "wires": [
-            [
-                "45d7a984580b3de2"
-            ]
-        ]
-    },
-    {
         "id": "a63d56cfa9089a54",
         "type": "change",
         "z": "2fd09629f2e4ee90",
@@ -1581,7 +1525,7 @@
             {
                 "t": "set",
                 "p": "leseBereit",
-                "pt": "msg",
+                "pt": "global",
                 "to": "payload",
                 "tot": "msg"
             }
@@ -1597,6 +1541,146 @@
             [
                 "69a0138a6b5599d7",
                 "43e4983c78a0cc2d"
+            ]
+        ]
+    },
+    {
+        "id": "fa8025f7458be979",
+        "type": "change",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "dataReadFromFile",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 160,
+        "y": 560,
+        "wires": [
+            [
+                "4ae79c0bd4e069e1"
+            ]
+        ]
+    },
+    {
+        "id": "875a131f274cfaa6",
+        "type": "debug",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "a5f744e80bdd4cdd",
+        "type": "change",
+        "z": "2fd09629f2e4ee90",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "start",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 180,
+        "wires": [
+            [
+                "875a131f274cfaa6"
+            ]
+        ]
+    },
+    {
+        "id": "e0f21ec2579e0832",
+        "type": "OpcUa-Client",
+        "z": "2fd09629f2e4ee90",
+        "endpoint": "55182065ac22cf83",
+        "action": "write",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "folderName4PKI": "",
+        "name": "send lese_bereit(true) to SPS",
+        "x": 970,
+        "y": 760,
+        "wires": [
+            [
+                "bc79a1f3ce766808",
+                "cfbe733c16dc6bfe"
+            ]
+        ]
+    },
+    {
+        "id": "f2c4e37d7dc784df",
+        "type": "OpcUa-Item",
+        "z": "2fd09629f2e4ee90",
+        "item": "ns=4;i=16",
+        "datatype": "Boolean",
+        "value": "true",
+        "name": "set lese_bereit true",
+        "x": 690,
+        "y": 760,
+        "wires": [
+            [
+                "e0f21ec2579e0832"
+            ]
+        ]
+    },
+    {
+        "id": "c4432b7e47d2ba4a",
+        "type": "change",
+        "z": "2fd09629f2e4ee90",
+        "name": "set send_data_completed to true",
+        "rules": [
+            {
+                "t": "set",
+                "p": "send_data_completed",
+                "pt": "global",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 180,
+        "y": 740,
+        "wires": [
+            [
+                "b0075b7d8ad4656b"
             ]
         ]
     },
@@ -2217,6 +2301,7 @@
         "id": "c7fce2cf14ea6927",
         "type": "OpcUa-Item",
         "z": "30bb086b756a8fd8",
+        "d": true,
         "item": "ns=4;i=16",
         "datatype": "Boolean",
         "value": "",
